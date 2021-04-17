@@ -11,10 +11,11 @@
 console.log(count);
 
 // 2
-function range(x,y) {
-    for (let i = x; i <= y; i = 1){
-        range[i] = i + 1;
+function range(x,y,z=1) {
+    let arr = [];
+    for (let i = x; i <= y; i += z){
+        arr.push(i);    
     }
+    return arr;
 }
-// let massiv = range(2,6);
-// console.log(massiv);
+console.log(range(2, 6));

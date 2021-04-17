@@ -69,3 +69,12 @@ for (let q = 1; q <= 6; q++) {
         console.log(`${q}×${w}=${q * w}`);
     }
 }
+ let minimum = 1, maximum = 100;
+ while (true) {
+     //let tmp =(minimum + maximum)/2
+// answer  это число равно tmp?
+// если answer  равно 1 - break
+// answer =  Это число меньше tmp?
+// если answer  равно 1 - maximum = tmp
+// еще если answer равно 0 - minimum = tmp
+ }
