@@ -19,3 +19,33 @@ function range(x,y,z=1) {
     return arr;
 }
 console.log(range(2, 6));
+
+//3 
+
+
+
+let text = "Lorem error ipsum dolor sit amet consectetur adipisicing elit Aut corporis dolor delectus ducimus dolor error iusto laudantium officia officiis vero error voluptatibus Aliquam ea ipsa quasi dolor sapiente error ullam A dolore dolorum minima provident error  voluptas Aliquam aut fugiat hic inventore error nam provident ratione sed"; 
+//  let checkSpam (text, "error", "dolor");
+function findtext(text, ...words){
+    if (text.indexOf("error") != -1) {
+      
+    }
+    
+}
+
+
+
+
+// 4
+let numsArr = [
+    [3, 5, -1, 6, 0],
+    [56, -9, 111, 6],
+    [11, 86, -12],
+];
+console.log(numsArr);
+
+let numsArrPlus = numsArr.map(sub_numsArr => sub_numsArr.map(elem => elem+10));
+console.log(numsArrPlus);
+
+let numsArrFilter = numsArr.map(sub_numsArr => sub_numsArr.filter(e => e > 0));
+console.log(numsArrFilter);
