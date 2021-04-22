@@ -46,12 +46,15 @@ function twoObject(obj, title, count){
     let newObj = {};
     if (typeof obj !== 'object'|| typeof title !== 'string'|| typeof count !== 'number') { return false }
    
-    for (let prop in obj){
-        if (obj[prop].price > from && obj[prop].price < to) newObj[prop] = obj[prop];
+    for (let propName in obj){
+        if (obj[propName].title === title) {
+            if (obj[propName].count >= count) {
+                obj[propName].count - count;
+                return true;
+            }
+            return false;
+        }
     }
-    return newObj;
-}
-
-;
-console.log(oneObject(goods, 1000, 3000));
+};
+    console.log(twoObject(goods, "Пианино", 30));
 //  нужно в условии  прописать что ,  при вводе названия нужно вывести число этого объекта

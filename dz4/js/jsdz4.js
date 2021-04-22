@@ -22,17 +22,28 @@ console.log(range(2, 6));
 
 //3 
 
-
-
 let text = "Lorem error ipsum dolor sit amet consectetur adipisicing elit Aut corporis dolor delectus ducimus dolor error iusto laudantium officia officiis vero error voluptatibus Aliquam ea ipsa quasi dolor sapiente error ullam A dolore dolorum minima provident error  voluptas Aliquam aut fugiat hic inventore error nam provident ratione sed"; 
-//  let checkSpam (text, "error", "dolor");
-function findtext(text, ...words){
-    if (text.indexOf("error") != -1) {
-      
-    }
-    
-}
 
+let checkSpam = (text, ...spamWords) => {
+    let frequency = [];
+    frequency.length = spamWords.length;
+     let wordsArr = text.split(" ");
+
+   for (let spamWordIndex = 0; spamWordIndex < spamWords.length; spamWordIndex ++) {
+        for( let textWord of wordsArr ){
+            if (textWord === spamWords[spamWordIndex]){
+                if (frequency[spamWordIndex]!==undefined){
+                    frequency[spamWordIndex]++;
+                } else {
+                    frequency[spamWordIndex] = 1;
+                }
+            }
+        }
+    }
+
+    return frequency; 
+}
+console.log("checkSpam", checkSpam(text, "error", "dolor"));
 
 
 
