@@ -56,5 +56,56 @@ function twoObject(obj, title, count){
         }
     }
 };
-    console.log(twoObject(goods, "Пианино", 30));
-//  нужно в условии  прописать что ,  при вводе названия нужно вывести число этого объекта
+    console.log(twoObject(goods, "Пианино", 15));
+
+// 3
+// Написать функцию, которая принимает на вход массив arr (например, books) и фамилию автора.
+// Создает и возвращает  новый массив, в который войдут все книги указанного автора,
+// если такого автора нет, возвращает пустой массив.
+
+
+
+
+
+// 4
+let books = [
+    { author: 'Пушкин', title: 'Пир во время чумы'},
+    { author: 'Толстой', title: 'Война и мир'},
+    { author: 'Лермонтов', title: 'Тамань'},
+    { author: 'Гончаров', title: 'Обломов'},
+    { author: 'Лермонтов', title: 'Герой Нашего Времени'},
+    { author: 'Пушкин', title: 'Руслан и Людмила'},
+    { author: 'Лермонтов', title: 'И скучно, и грустно'},
+];
+  books.sort(function (a, b) {
+    if (a.title > b.title) {
+      return 1;
+    }
+    if (a.title < b.title) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  });
+  console.log(books);
+
+
+//   3
+
+let booksPro = [
+    { author: 'Пушкин', title: 'Пир во время чумы'},
+    { author: 'Толстой', title: 'Война и мир'},
+    { author: 'Лермонтов', title: 'Тамань'},
+    { author: 'Гончаров', title: 'Обломов'},
+    { author: 'Лермонтов', title: 'Герой Нашего Времени'},
+    { author: 'Пушкин', title: 'Руслан и Людмила'},
+    { author: 'Лермонтов', title: 'И скучно, и грустно'},
+];
+
+function oneAuthor(mass, author){
+let newBooks = [];
+for (let arg of mass){
+    if (arg.author === author) return arg.title;
+} return newBooks;
+}
+console.log(oneAuthor(books,'Пушкин'));
