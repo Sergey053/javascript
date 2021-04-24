@@ -54,23 +54,60 @@ let goods = [
     }
 ];
 
-function createTable(arr) {
-
-    
-
+function generateTable(arr) {
     let table = document.createElement("table");
-
-    for (let i = 0; i < arr[0].length; i++) {
-       let row = document.createElement("tr");
-        for (let j = 0; j < arr.length; j++) {
-            let column = document.createElement("td");
-            let content = document.createTextNode(arr[j][i]);
-            column.appendChild(content);
-            row.appendChild(column);
+    let captionRow = document.createElement("tr");
+    for (let propertyName in arr[0]){
+        let captionCell = document.createElement("th");
+        captionCell.innerText = propertyName.toUpperCase();
+        captionRow.append(captionCell);
+    }
+    table.append(captionRow);
+    for (let element of arr) {
+        let row = table.insertRow();
+        for (let propertyName in element){
+            let cell = row.insertCell();
+            cell.innerText = element[propertyName];
         }
-        table.appendChild(row);
     }
+    return table;
+}
+document.body.append(
+generateTable(goods),
+generateTable(articles)
+);
+   
+function generateField(n, data){
+    n = n>=3 ? n : 3;
+    let field = document.createElement("div");
+    field.style.cssText =
+     "margin:0 auto;"+
+    "width: 40vw;"+
+    "display: flex;" +
+    "flex-wrap: wrap;"; 
+    for(let i=0; i< n*n; i+=1){
+        let cell = document.createElement("div");
+        cell.style.border = "1px solid black";
+        cell.style.boxSizing ="border-box";
+        cell.style.width = cell.style.height = 40 / n + "vw";
+        field.append(cell);
+    }
+    addRandomData(field, data)
+    return field;
+}
+let prises = {
+    headphones: "Наушники",
+    book: "Книга",
+    postcard: "Открытка"
+};
+document.body.append(generateField(3, prises));
 
-    document.body.appendChild(table);
+
+
+function addRandomData(field, dataObject){
+let attrvalues = Object.keys(dataObject);
+    for (let attrValue of attrvalues){
+        let randomIndex = Math.floor(Math.random() * field.children.length);
+        field.children[randomIndex].setAttribute("prise", attrValue);
     }
-    createTable(articles);
+}
