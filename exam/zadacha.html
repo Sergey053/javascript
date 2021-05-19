@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="post" name="task" >
+        <div class="flex-row">
+            <h1 class="margin">Добавление задачи</h1>
+            <span></span>
+            <!-- <input name="task-plus" id="task-plus" type="text" placeholder="задача добавлена"> -->
+        </div>
+        <div class="flex-row margin-top">
+            <h3 class="margin">Название задачи</h3>
+            <input name="name-task" id="name-task" type="text" placeholder="введите название задачи">
+            <span id="name-error"></span>
+        </div>
+        <div class="flex-row margin-top">
+            <h3 class="margin">Описание задачи</h3>
+            <textarea name="description-task" id="description-task" cols="30" rows="10"></textarea>
+        </div>
+        <div class="flex-row margin-top">
+            <h3 class="margin">Срок выполнения задачи</h3>
+            <input type="date" name="date-task" id="date-task">
+        </div>
+        <div class="margin margin-top">
+             <input name="submitTask" id="submitTask" type="button" value="Добавить участника">
+        </div>
+        <div class="flex-row margin-top" id="members">
+            <!-- <div class="margin">
+                <input placeholder="участник 1">
+                <input type="button" value="Х">
+            </div>
+            <div class="margin">
+                <input placeholder="участник 2">
+            <input type="button" value="Х">
+            </div>
+            <div class="margin">
+                <input placeholder="участник 3">
+                <input type="button" value="Х"> -->
+            </div>
+            
+            
+        </div>
+        <div class="bottom margin-top ">
+            <input name="create-task" id="create-task" type="submit" value="Добавить задачу">
+        </div>
+    </form>
+    <div class="flex-row ">
+        <a href="spisok.html">Перейти в список задач</a>
+    </div>
+
+
+
+
+
+
+    <script src="js/zadanie.js"></script>
+</body>
+</html>
