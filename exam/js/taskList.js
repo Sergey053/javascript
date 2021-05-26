@@ -3,12 +3,7 @@
     let storage = localStorage;
     let tasksFromStorage = JSON.parse(storage.getItem("tasks"));
     console.log(tasksFromStorage);
-    if(!tasksFromStorage || tasksFromStorage.length === 0){
-        
-        document.getElementById('noTask').innerHTML = `<h3>Нет запланированных задач</h3>`;
-       
-        };
-
+   
     let sort = tasksFromStorage.sort(function(a, b) {
         if (a.date < b.date) return -1;
         if (a.date > b.date) return 1;
@@ -58,7 +53,13 @@ for (let tasks of tasksFromStorage){
         
         sort.splice(tasks, 1);
         localStorage.setItem('tasks', JSON.stringify(sort));
+        tasksFromStorage = JSON.parse(storage.getItem("tasks"));
+    console.log(tasksFromStorage);
+    if(tasksFromStorage.length === 0){
         
+        document.getElementById('noTask').innerHTML = `<h3>Нет запланированных задач</h3>`;
+       
+        };
         }
     });
          
