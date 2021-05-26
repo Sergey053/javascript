@@ -11,7 +11,7 @@
     <form action="#" method="post" name="task" >
         <div class="flex-row">
             <h1 class="margin">Добавление задачи</h1>
-            <span></span>
+            <span id="add"></span>
             <!-- <input name="task-plus" id="task-plus" type="text" placeholder="задача добавлена"> -->
         </div>
         <div class="flex-row margin-top">
@@ -26,6 +26,7 @@
         <div class="flex-row margin-top">
             <h3 class="margin">Срок выполнения задачи</h3>
             <input type="date" name="date-task" id="date-task">
+            <span id="date-error"></span>
         </div>
         <div class="margin margin-top">
              <input name="submitTask" id="submitTask" type="button" value="Добавить участника">
@@ -48,6 +49,7 @@
         </div>
         <div class="bottom margin-top ">
             <input name="create-task" id="create-task" type="submit" value="Добавить задачу">
+            <span id="no"></span>
         </div>
     </form>
     <div class="flex-row ">

@@ -7,6 +7,11 @@ let nameRules = {
     maxLength: 20,
     errorField: document.getElementById("name-error")
 };
+let dateRules = {
+    elem: taskForm.elements["date-task"],
+  
+    errorField: document.getElementById("date-error")
+};
 
 let validator = {
     // checkMinLen: function (rule) {}
@@ -18,31 +23,39 @@ let validator = {
         }
         rule.errorField.innerText = "";
         return true;
+    },
+    isBefore(rule){
+        let taskDate = new Date(rule.elem.value);
+        let currentDate = new Date();
+        if (taskDate.getDate()< currentDate.getDate()){
+             rule.errorField.innerText = "Дата не может быть меньше" + currentDate;
+             return false;
+            }
+            rule.errorField.innerText = "";
+            return true;
+
     }
 }
 taskForm.elements.name-task
     .addEventListener("keyup", validator.checkMinLen.bind(null, nameRules));
+ taskForm.elements.date-task
+    .addEventListener("keyup", validator.isBefore.bind(null, dateRules));
 
     taskForm.addEventListener("submit", (event)=>{
         event.preventDefault();
-        if (!validator.checkMinLen(nameRules)){
-            console.log("Данные нельзя отправлять на сервер");
-        } else {
-            console.log("Данные можно отправлять на сервер");
+        if (!validator.checkMinLen(nameRules) || !validator.isBefore(dateRules)) {
+            document.getElementById('no').innerText = 'Данные введены некорректно';
+            }else {
+                document.getElementById('no').innerText = '';
+                 document.getElementById('add').innerText = 'Задача была успешно отправлена';
              addTask();   
-            // let task = {};
-            // task.title = taskForm.elements["name-task"].value;
-            // task.description = taskForm.elements["description-task"].value;
-            // task.date = taskForm.elements["date-task"].value;
-
-            
-            // 1. loginForm.submit(); - отправка данных с перезагрузкой страницы
-            // 2. отправка данных аякс запросом без перезагрузки страницы
+           
         }
     })
     let addmember = document.getElementById('submitTask');
     let members = document.getElementById('members');
     submitTask.addEventListener('click', () => {
+
         let id = Math.random().toString(20);
         let div = document.createElement('div');
         let input = document.createElement('input');
@@ -56,24 +69,24 @@ taskForm.elements.name-task
         btn.addEventListener('click', (event) =>{
             div.remove();
         })
-    })
+   
+})
     function addTask() {
         let title = taskForm.elements["name-task"].value;
         let description = taskForm.elements["description-task"].value;
         let date = taskForm.elements["date-task"].value;
-        let currentDate = new Date;
-        let nowDate = String(currentDate.getFullYear, currentDate.getMonth, currentDate.getDate);
-        console.log(nowDate);
+ 
+        let taskDate = new Date(date);
         let usersArr = [];
-        let inputs = taskForm.elements.users;
-        for (let inp in inputs) {
+        let inputs = document.getElementsByName("users");
+        for (let inp of inputs) {
             usersArr.push(inp.value)
         }
         
         let taskObj = {};
         taskObj["title"] = title;
         taskObj["description"] = description;
-        taskObj["date"] = date;
+        taskObj["date"] = taskDate;
         taskObj["inputs"] = usersArr;
         let storage = localStorage;
         let tasks = JSON.parse(storage.getItem("tasks"));
@@ -83,4 +96,7 @@ taskForm.elements.name-task
         console.log(arrToJson);
         storage.setItem("tasks", arrToJson);
         }
-    
+
+
+
+        
